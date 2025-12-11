@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="el">
 <head>
@@ -17,30 +16,41 @@
 </header>
 
 <main>
+<!-- Κουμπιά κατηγοριών -->
+<div id="categoryButtons">
+    <button data-category="all">Όλα</button>
+    <button data-category="θήκες">Θήκες</button>
+    <button data-category="φωτιστικά">Φωτιστικά</button>
+    <button data-category="scrunchie">Scrunchie</button>
+    <button data-category="powerbank">Powerbank</button>
+</div>
+
+<!-- Search -->
 <input type="text" id="searchInput" placeholder="Πληκτρολόγησε προϊόν...">
 
+<!-- Προϊόντα -->
 <div id="productList">
-    <div class="product" data-name="Κόκκινο Θήκη Κινητού">
+    <div class="product" data-name="Κόκκινο Θήκη Κινητού" data-category="θήκες">
         <img src="images/product1.jpg" alt="Κόκκινο Θήκη Κινητού">
         <h3>Κόκκινο Θήκη Κινητού</h3>
         <p>Διαθέσιμα χρώματα: Κόκκινο, Μπλε, Πράσινο</p>
     </div>
-    <div class="product" data-name="Μπλε Θήκη Κινητού">
+    <div class="product" data-name="Μπλε Θήκη Κινητού" data-category="θήκες">
         <img src="images/product2.jpg" alt="Μπλε Θήκη Κινητού">
         <h3>Μπλε Θήκη Κινητού</h3>
         <p>Διαθέσιμα χρώματα: Μπλε, Κίτρινο, Ροζ</p>
     </div>
-    <div class="product" data-name="Πράσινο LED Φωτιστικό">
+    <div class="product" data-name="Πράσινο LED Φωτιστικό" data-category="φωτιστικά">
         <img src="images/product3.jpg" alt="Πράσινο LED Φωτιστικό">
         <h3>Πράσινο LED Φωτιστικό</h3>
         <p>Διαθέσιμα χρώματα: Πράσινο, Μπλε, Κόκκινο</p>
     </div>
-    <div class="product" data-name="Ροζ Scrunchie Μαλλιών">
+    <div class="product" data-name="Ροζ Scrunchie Μαλλιών" data-category="scrunchie">
         <img src="images/product4.jpg" alt="Ροζ Scrunchie Μαλλιών">
         <h3>Ροζ Scrunchie Μαλλιών</h3>
         <p>Διαθέσιμα χρώματα: Ροζ, Μωβ, Μπλε</p>
     </div>
-    <div class="product" data-name="Κίτρινο Powerbank">
+    <div class="product" data-name="Κίτρινο Powerbank" data-category="powerbank">
         <img src="images/product5.jpg" alt="Κίτρινο Powerbank">
         <h3>Κίτρινο Powerbank</h3>
         <p>Διαθέσιμα χρώματα: Κίτρινο, Μαύρο, Άσπρο</p>
@@ -52,6 +62,38 @@
 <p>© 2025 Faenest Store</p>
 </footer>
 
-<script src="script.js"></script>
+<!-- JS -->
+<script>
+const input = document.getElementById('searchInput');
+const products = document.querySelectorAll('#productList .product');
+
+// Search
+input.addEventListener('keyup', function() {
+    const filter = input.value.toLowerCase();
+    products.forEach(product => {
+        if (product.dataset.name.toLowerCase().includes(filter)) {
+            product.style.display = 'inline-block';
+        } else {
+            product.style.display = 'none';
+        }
+    });
+});
+
+// Κατηγορίες
+const buttons = document.querySelectorAll('#categoryButtons button');
+
+buttons.forEach(button => {
+    button.addEventListener('click', () => {
+        const category = button.dataset.category;
+        products.forEach(product => {
+            if (category === 'all' || product.dataset.category === category) {
+                product.style.display = 'inline-block';
+            } else {
+                product.style.display = 'none';
+            }
+        });
+    });
+});
+</script>
 </body>
 </html>
