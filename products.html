@@ -30,35 +30,35 @@
 
     <!-- Προϊόντα -->
     <div id="productList">
-        <div class="product" data-name="Κόκκινο Θήκη Κινητού" data-category="θήκες">
+        <div class="product" data-name="Κόκκινο Θήκη Κινητού" data-category="θήκες" data-hosted-id="UNK85VCWUYXP2">
             <img src="images/product1.jpg" alt="Κόκκινο Θήκη Κινητού">
             <h3>Κόκκινο Θήκη Κινητού</h3>
             <p>Διαθέσιμα χρώματα: Κόκκινο, Μπλε, Πράσινο</p>
             <div class="paypal-button-container"></div>
         </div>
 
-        <div class="product" data-name="Μπλε Θήκη Κινητού" data-category="θήκες">
+        <div class="product" data-name="Μπλε Θήκη Κινητού" data-category="θήκες" data-hosted-id="UNK85VCWUYXP3">
             <img src="images/product2.jpg" alt="Μπλε Θήκη Κινητού">
             <h3>Μπλε Θήκη Κινητού</h3>
             <p>Διαθέσιμα χρώματα: Μπλε, Κίτρινο, Ροζ</p>
             <div class="paypal-button-container"></div>
         </div>
 
-        <div class="product" data-name="Πράσινο LED Φωτιστικό" data-category="φωτιστικά">
+        <div class="product" data-name="Πράσινο LED Φωτιστικό" data-category="φωτιστικά" data-hosted-id="UNK85VCWUYXP4">
             <img src="images/product3.jpg" alt="Πράσινο LED Φωτιστικό">
             <h3>Πράσινο LED Φωτιστικό</h3>
             <p>Διαθέσιμα χρώματα: Πράσινο, Μπλε, Κόκκινο</p>
             <div class="paypal-button-container"></div>
         </div>
 
-        <div class="product" data-name="Ροζ Scrunchie Μαλλιών" data-category="scrunchie">
+        <div class="product" data-name="Ροζ Scrunchie Μαλλιών" data-category="scrunchie" data-hosted-id="UNK85VCWUYXP5">
             <img src="images/product4.jpg" alt="Ροζ Scrunchie Μαλλιών">
             <h3>Ροζ Scrunchie Μαλλιών</h3>
             <p>Διαθέσιμα χρώματα: Ροζ, Μωβ, Μπλε</p>
             <div class="paypal-button-container"></div>
         </div>
 
-        <div class="product" data-name="Κίτρινο Powerbank" data-category="powerbank">
+        <div class="product" data-name="Κίτρινο Powerbank" data-category="powerbank" data-hosted-id="UNK85VCWUYXP6">
             <img src="images/product5.jpg" alt="Κίτρινο Powerbank">
             <h3>Κίτρινο Powerbank</h3>
             <p>Διαθέσιμα χρώματα: Κίτρινο, Μαύρο, Άσπρο</p>
@@ -94,10 +94,15 @@ buttons.forEach(button => {
     });
 });
 
-// Δημιουργία PayPal buttons για όλα τα προϊόντα
+// Δημιουργία PayPal κουμπιών για όλα τα προϊόντα
 products.forEach(product => {
     const container = product.querySelector('.paypal-button-container');
-    paypal.HostedButtons({ hostedButtonId: "UNK85VCWUYXP2" }).render(container);
+    const hostedId = product.dataset.hostedId;
+    if (hostedId) {
+        paypal.HostedButtons({
+            hostedButtonId: hostedId
+        }).render(container);
+    }
 });
 </script>
 
