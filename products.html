@@ -30,42 +30,40 @@
 
     <!-- Προϊόντα -->
     <div id="productList">
-
-        <div class="product" data-name="Κόκκινο Θήκη Κινητού" data-category="θήκες" data-buttonid="UNK85VCWUYXP2">
+        <div class="product" data-name="Κόκκινο Θήκη Κινητού" data-category="θήκες">
             <img src="images/product1.jpg" alt="Κόκκινο Θήκη Κινητού">
             <h3>Κόκκινο Θήκη Κινητού</h3>
             <p>Διαθέσιμα χρώματα: Κόκκινο, Μπλε, Πράσινο</p>
-            <div class="paypal-container"></div>
+            <div class="paypal-button-container"></div>
         </div>
 
-        <div class="product" data-name="Μπλε Θήκη Κινητού" data-category="θήκες" data-buttonid="UNK85VCWUYXP2">
+        <div class="product" data-name="Μπλε Θήκη Κινητού" data-category="θήκες">
             <img src="images/product2.jpg" alt="Μπλε Θήκη Κινητού">
             <h3>Μπλε Θήκη Κινητού</h3>
             <p>Διαθέσιμα χρώματα: Μπλε, Κίτρινο, Ροζ</p>
-            <div class="paypal-container"></div>
+            <div class="paypal-button-container"></div>
         </div>
 
-        <div class="product" data-name="Πράσινο LED Φωτιστικό" data-category="φωτιστικά" data-buttonid="UNK85VCWUYXP2">
+        <div class="product" data-name="Πράσινο LED Φωτιστικό" data-category="φωτιστικά">
             <img src="images/product3.jpg" alt="Πράσινο LED Φωτιστικό">
             <h3>Πράσινο LED Φωτιστικό</h3>
             <p>Διαθέσιμα χρώματα: Πράσινο, Μπλε, Κόκκινο</p>
-            <div class="paypal-container"></div>
+            <div class="paypal-button-container"></div>
         </div>
 
-        <div class="product" data-name="Ροζ Scrunchie Μαλλιών" data-category="scrunchie" data-buttonid="UNK85VCWUYXP2">
+        <div class="product" data-name="Ροζ Scrunchie Μαλλιών" data-category="scrunchie">
             <img src="images/product4.jpg" alt="Ροζ Scrunchie Μαλλιών">
             <h3>Ροζ Scrunchie Μαλλιών</h3>
             <p>Διαθέσιμα χρώματα: Ροζ, Μωβ, Μπλε</p>
-            <div class="paypal-container"></div>
+            <div class="paypal-button-container"></div>
         </div>
 
-        <div class="product" data-name="Κίτρινο Powerbank" data-category="powerbank" data-buttonid="UNK85VCWUYXP2">
+        <div class="product" data-name="Κίτρινο Powerbank" data-category="powerbank">
             <img src="images/product5.jpg" alt="Κίτρινο Powerbank">
             <h3>Κίτρινο Powerbank</h3>
             <p>Διαθέσιμα χρώματα: Κίτρινο, Μαύρο, Άσπρο</p>
-            <div class="paypal-container"></div>
+            <div class="paypal-button-container"></div>
         </div>
-
     </div>
 </main>
 
@@ -96,10 +94,10 @@ buttons.forEach(button => {
     });
 });
 
-// Φόρτωση PayPal buttons για όλα τα προϊόντα
+// Δημιουργία PayPal buttons για όλα τα προϊόντα
 products.forEach(product => {
-    const buttonId = product.dataset.buttonid;
-    paypal.HostedButtons({hostedButtonId: buttonId}).render(product.querySelector('.paypal-container'));
+    const container = product.querySelector('.paypal-button-container');
+    paypal.HostedButtons({ hostedButtonId: "UNK85VCWUYXP2" }).render(container);
 });
 </script>
 
