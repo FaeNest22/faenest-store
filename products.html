@@ -4,8 +4,7 @@
 <meta charset="UTF-8">
 <title>Faenest Store - Προϊόντα</title>
 <link rel="stylesheet" href="style.css">
-<!-- PayPal SDK -->
-<script src="https://www.paypal.com/sdk/js?client-id=BAACiS4WUJQ8L-QVULTIBA5vOxBzn8vEeO8EgU_CcaZ5JLEOhU8VywTZKDaQglufVSdhSsvNhCGeWb81Rc&currency=EUR"></script>
+<script src="https://www.paypal.com/sdk/js?client-id=BAACiS4WUJQ8L-QVULTIBA5vOxBzn8vEeO8EgU_CcaZ5JLEOhU8VywTZKDaQglufVSdhSsvNhCGeWb81Rc&components=hosted-buttons&disable-funding=venmo&currency=EUR"></script>
 </head>
 <body>
 <header>
@@ -17,7 +16,6 @@
 </header>
 
 <main>
-    <!-- Κουμπιά κατηγοριών -->
     <div id="categoryButtons">
         <button data-category="all">Όλα</button>
         <button data-category="θήκες">Θήκες</button>
@@ -26,41 +24,39 @@
         <button data-category="powerbank">Powerbank</button>
     </div>
 
-    <!-- Search -->
     <input type="text" id="searchInput" placeholder="Πληκτρολόγησε προϊόν...">
 
-    <!-- Προϊόντα -->
     <div id="productList">
 
-        <div class="product" data-name="Κόκκινο Θήκη Κινητού" data-category="θήκες" data-price="14.90">
+        <div class="product" data-name="Κόκκινο Θήκη Κινητού" data-category="θήκες" data-hosted-id="UNK85VCWUYXP2">
             <img src="images/product1.jpg" alt="Κόκκινο Θήκη Κινητού">
             <h3>Κόκκινο Θήκη Κινητού</h3>
             <p>Διαθέσιμα χρώματα: Κόκκινο, Μπλε, Πράσινο</p>
             <div class="paypal-button-container"></div>
         </div>
 
-        <div class="product" data-name="Μπλε Θήκη Κινητού" data-category="θήκες" data-price="14.90">
+        <div class="product" data-name="Μπλε Θήκη Κινητού" data-category="θήκες" data-hosted-id="UNK85VCWUYXP3">
             <img src="images/product2.jpg" alt="Μπλε Θήκη Κινητού">
             <h3>Μπλε Θήκη Κινητού</h3>
             <p>Διαθέσιμα χρώματα: Μπλε, Κίτρινο, Ροζ</p>
             <div class="paypal-button-container"></div>
         </div>
 
-        <div class="product" data-name="Πράσινο LED Φωτιστικό" data-category="φωτιστικά" data-price="14.90">
+        <div class="product" data-name="Πράσινο LED Φωτιστικό" data-category="φωτιστικά" data-hosted-id="UNK85VCWUYXP4">
             <img src="images/product3.jpg" alt="Πράσινο LED Φωτιστικό">
             <h3>Πράσινο LED Φωτιστικό</h3>
             <p>Διαθέσιμα χρώματα: Πράσινο, Μπλε, Κόκκινο</p>
             <div class="paypal-button-container"></div>
         </div>
 
-        <div class="product" data-name="Ροζ Scrunchie Μαλλιών" data-category="scrunchie" data-price="14.90">
+        <div class="product" data-name="Ροζ Scrunchie Μαλλιών" data-category="scrunchie" data-hosted-id="UNK85VCWUYXP5">
             <img src="images/product4.jpg" alt="Ροζ Scrunchie Μαλλιών">
             <h3>Ροζ Scrunchie Μαλλιών</h3>
             <p>Διαθέσιμα χρώματα: Ροζ, Μωβ, Μπλε</p>
             <div class="paypal-button-container"></div>
         </div>
 
-        <div class="product" data-name="Κίτρινο Powerbank" data-category="powerbank" data-price="14.90">
+        <div class="product" data-name="Κίτρινο Powerbank" data-category="powerbank" data-hosted-id="UNK85VCWUYXP6">
             <img src="images/product5.jpg" alt="Κίτρινο Powerbank">
             <h3>Κίτρινο Powerbank</h3>
             <p>Διαθέσιμα χρώματα: Κίτρινο, Μαύρο, Άσπρο</p>
@@ -97,28 +93,15 @@ buttons.forEach(button => {
     });
 });
 
-// PayPal Smart Buttons για όλα τα προϊόντα
+// Δημιουργία PayPal κουμπιών για όλα τα προϊόντα
 products.forEach(product => {
-    const price = product.dataset.price;
-    const name = product.dataset.name;
     const container = product.querySelector('.paypal-button-container');
-
-    paypal.Buttons({
-        style: { layout: 'vertical', color: 'gold', shape: 'rect', label: 'paypal' },
-        createOrder: function(data, actions) {
-            return actions.order.create({
-                purchase_units: [{
-                    description: name,
-                    amount: { value: price }
-                }]
-            });
-        },
-        onApprove: function(data, actions) {
-            return actions.order.capture().then(function(details) {
-                alert('Η αγορά ολοκληρώθηκε για το προϊόν: ' + name);
-            });
-        }
-    }).render(container);
+    const hostedId = product.dataset.hostedId;
+    if (hostedId) {
+        paypal.HostedButtons({
+            hostedButtonId: hostedId
+        }).render(container);
+    }
 });
 </script>
 
