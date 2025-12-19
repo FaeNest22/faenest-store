@@ -3,118 +3,80 @@
 <head>
 <meta charset="UTF-8">
 <title>Faenest Store - Προϊόντα</title>
-<meta name="description" content="Δες όλα τα προϊόντα Faenest με πολλά χρώματα.">
 <link rel="stylesheet" href="style.css">
 <script src="https://www.paypal.com/sdk/js?client-id=BAACiS4WUJQ8L-QVULTIBA5vOxBzn8vEeO8EgU_CcaZ5JLEOhU8VywTZKDaQglufVSdhSsvNhCGeWb81Rc&components=hosted-buttons&disable-funding=venmo&currency=EUR"></script>
-<style>
-/* Grid εμφάνιση προϊόντων */
-#productList {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-  gap: 20px;
-  margin-top: 20px;
-}
-
-.product {
-  border: 1px solid #ddd;
-  padding: 10px;
-  text-align: center;
-  background: #fff;
-  border-radius: 8px;
-}
-
-#categoryButtons {
-  margin-top: 20px;
-  display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
-}
-
-#categoryButtons button {
-  padding: 8px 12px;
-  cursor: pointer;
-}
-
-#searchInput {
-  margin-top: 20px;
-  padding: 8px;
-  width: 100%;
-  max-width: 400px;
-  display: block;
-}
-</style>
 </head>
 <body>
 <header>
-<h1>Faenest Store</h1>
-<nav>
-<a href="index.html">Αρχική</a> | 
-<a href="products.html">Προϊόντα</a>
-</nav>
+    <h1>Faenest Store</h1>
+    <nav>
+        <a href="index.html">Αρχική</a> | 
+        <a href="products.html">Προϊόντα</a>
+    </nav>
 </header>
 
 <main>
-<!-- Κουμπιά κατηγοριών -->
-<div id="categoryButtons">
-    <button data-category="all">Όλα</button>
-    <button data-category="θήκες">Θήκες</button>
-    <button data-category="φωτιστικά">Φωτιστικά</button>
-    <button data-category="scrunchie">Scrunchie</button>
-    <button data-category="powerbank">Powerbank</button>
-</div>
-
-<!-- Search -->
-<input type="text" id="searchInput" placeholder="Πληκτρολόγησε προϊόν...">
-
-<!-- Προϊόντα -->
-<div id="productList">
-    <div class="product" data-name="Κόκκινο Θήκη Κινητού" data-category="θήκες">
-        <img src="images/product1.jpg" alt="Κόκκινο Θήκη Κινητού" width="200">
-        <h3>Κόκκινο Θήκη Κινητού</h3>
-        <p>Διαθέσιμα χρώματα: Κόκκινο, Μπλε, Πράσινο</p>
-        <p>€14.90 EUR</p>
-        <!-- PayPal Button -->
-        <div id="paypal-container-UNK85VCWUYXP2"></div>
-        <script>
-          paypal.HostedButtons({hostedButtonId: "UNK85VCWUYXP2"}).render("#paypal-container-UNK85VCWUYXP2");
-        </script>
+    <!-- Κουμπιά κατηγοριών -->
+    <div id="categoryButtons">
+        <button data-category="all">Όλα</button>
+        <button data-category="θήκες">Θήκες</button>
+        <button data-category="φωτιστικά">Φωτιστικά</button>
+        <button data-category="scrunchie">Scrunchie</button>
+        <button data-category="powerbank">Powerbank</button>
     </div>
 
-    <div class="product" data-name="Μπλε Θήκη Κινητού" data-category="θήκες">
-        <img src="images/product2.jpg" alt="Μπλε Θήκη Κινητού" width="200">
-        <h3>Μπλε Θήκη Κινητού</h3>
-        <p>Διαθέσιμα χρώματα: Μπλε, Κίτρινο, Ροζ</p>
-    </div>
+    <!-- Search -->
+    <input type="text" id="searchInput" placeholder="Πληκτρολόγησε προϊόν...">
 
-    <div class="product" data-name="Πράσινο LED Φωτιστικό" data-category="φωτιστικά">
-        <img src="images/product3.jpg" alt="Πράσινο LED Φωτιστικό" width="200">
-        <h3>Πράσινο LED Φωτιστικό</h3>
-        <p>Διαθέσιμα χρώματα: Πράσινο, Μπλε, Κόκκινο</p>
-    </div>
+    <!-- Προϊόντα -->
+    <div id="productList">
 
-    <div class="product" data-name="Ροζ Scrunchie Μαλλιών" data-category="scrunchie">
-        <img src="images/product4.jpg" alt="Ροζ Scrunchie Μαλλιών" width="200">
-        <h3>Ροζ Scrunchie Μαλλιών</h3>
-        <p>Διαθέσιμα χρώματα: Ροζ, Μωβ, Μπλε</p>
-    </div>
+        <div class="product" data-name="Κόκκινο Θήκη Κινητού" data-category="θήκες">
+            <img src="images/product1.jpg" alt="Κόκκινο Θήκη Κινητού">
+            <h3>Κόκκινο Θήκη Κινητού</h3>
+            <p>Διαθέσιμα χρώματα: Κόκκινο, Μπλε, Πράσινο</p>
+            <div id="paypal-container-UNK85VCWUYXP2"></div>
+            <script>
+              paypal.HostedButtons({hostedButtonId: "UNK85VCWUYXP2"}).render("#paypal-container-UNK85VCWUYXP2");
+            </script>
+        </div>
 
-    <div class="product" data-name="Κίτρινο Powerbank" data-category="powerbank">
-        <img src="images/product5.jpg" alt="Κίτρινο Powerbank" width="200">
-        <h3>Κίτρινο Powerbank</h3>
-        <p>Διαθέσιμα χρώματα: Κίτρινο, Μαύρο, Άσπρο</p>
+        <div class="product" data-name="Μπλε Θήκη Κινητού" data-category="θήκες">
+            <img src="images/product2.jpg" alt="Μπλε Θήκη Κινητού">
+            <h3>Μπλε Θήκη Κινητού</h3>
+            <p>Διαθέσιμα χρώματα: Μπλε, Κίτρινο, Ροζ</p>
+        </div>
+
+        <div class="product" data-name="Πράσινο LED Φωτιστικό" data-category="φωτιστικά">
+            <img src="images/product3.jpg" alt="Πράσινο LED Φωτιστικό">
+            <h3>Πράσινο LED Φωτιστικό</h3>
+            <p>Διαθέσιμα χρώματα: Πράσινο, Μπλε, Κόκκινο</p>
+        </div>
+
+        <div class="product" data-name="Ροζ Scrunchie Μαλλιών" data-category="scrunchie">
+            <img src="images/product4.jpg" alt="Ροζ Scrunchie Μαλλιών">
+            <h3>Ροζ Scrunchie Μαλλιών</h3>
+            <p>Διαθέσιμα χρώματα: Ροζ, Μωβ, Μπλε</p>
+        </div>
+
+        <div class="product" data-name="Κίτρινο Powerbank" data-category="powerbank">
+            <img src="images/product5.jpg" alt="Κίτρινο Powerbank">
+            <h3>Κίτρινο Powerbank</h3>
+            <p>Διαθέσιμα χρώματα: Κίτρινο, Μαύρο, Άσπρο</p>
+        </div>
+
     </div>
-</div>
 </main>
 
 <footer>
-<p>© 2025 Faenest Store</p>
+    <p>© 2025 Faenest Store</p>
 </footer>
 
 <script>
 const input = document.getElementById('searchInput');
 const products = document.querySelectorAll('#productList .product');
 
-// Search
+// Αναζήτηση προϊόντων
 input.addEventListener('keyup', function() {
     const filter = input.value.toLowerCase();
     products.forEach(product => {
@@ -122,7 +84,7 @@ input.addEventListener('keyup', function() {
     });
 });
 
-// Κατηγορίες
+// Φίλτρο κατά κατηγορία
 const buttons = document.querySelectorAll('#categoryButtons button');
 buttons.forEach(button => {
     button.addEventListener('click', () => {
@@ -133,5 +95,6 @@ buttons.forEach(button => {
     });
 });
 </script>
+
 </body>
 </html>
