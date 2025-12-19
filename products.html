@@ -4,7 +4,8 @@
 <meta charset="UTF-8">
 <title>Faenest Store - Προϊόντα</title>
 <link rel="stylesheet" href="style.css">
-<script src="https://www.paypal.com/sdk/js?client-id=BAACiS4WUJQ8L-QVULTIBA5vOxBzn8vEeO8EgU_CcaZ5JLEOhU8VywTZKDaQglufVSdhSsvNhCGeWb81Rc&components=hosted-buttons&disable-funding=venmo&currency=EUR"></script>
+<!-- PayPal SDK -->
+<script src="https://www.paypal.com/sdk/js?client-id=BAACiS4WUJQ8L-QVULTIBA5vOxBzn8vEeO8EgU_CcaZ5JLEOhU8VywTZKDaQglufVSdhSsvNhCGeWb81Rc&currency=EUR"></script>
 </head>
 <body>
 <header>
@@ -16,85 +17,68 @@
 </header>
 
 <main>
-<div id="categoryButtons">
-    <button data-category="all">Όλα</button>
-    <button data-category="θήκες">Θήκες</button>
-    <button data-category="φωτιστικά">Φωτιστικά</button>
-    <button data-category="scrunchie">Scrunchie</button>
-    <button data-category="powerbank">Powerbank</button>
-</div>
-
-<input type="text" id="searchInput" placeholder="Πληκτρολόγησε προϊόν...">
-
-<div id="productList">
-
-    <!-- Κόκκινο Θήκη Κινητού -->
-    <div class="product" data-name="Κόκκινο Θήκη Κινητού" data-category="θήκες">
-        <img src="images/product1.jpg" alt="Κόκκινο Θήκη Κινητού">
-        <h3>Κόκκινο Θήκη Κινητού</h3>
-        <p>Διαθέσιμα χρώματα: Κόκκινο, Μπλε, Πράσινο</p>
-        <div id="paypal-container-RED"></div>
-        <script>
-            paypal.HostedButtons({hostedButtonId: "RED_BUTTON_ID"}).render("#paypal-container-RED");
-        </script>
+    <!-- Κουμπιά κατηγοριών -->
+    <div id="categoryButtons">
+        <button data-category="all">Όλα</button>
+        <button data-category="θήκες">Θήκες</button>
+        <button data-category="φωτιστικά">Φωτιστικά</button>
+        <button data-category="scrunchie">Scrunchie</button>
+        <button data-category="powerbank">Powerbank</button>
     </div>
 
-    <!-- Μπλε Θήκη Κινητού -->
-    <div class="product" data-name="Μπλε Θήκη Κινητού" data-category="θήκες">
-        <img src="images/product2.jpg" alt="Μπλε Θήκη Κινητού">
-        <h3>Μπλε Θήκη Κινητού</h3>
-        <p>Διαθέσιμα χρώματα: Μπλε, Κίτρινο, Ροζ</p>
-        <div id="paypal-container-BLUE"></div>
-        <script>
-            paypal.HostedButtons({hostedButtonId: "BLUE_BUTTON_ID"}).render("#paypal-container-BLUE");
-        </script>
-    </div>
+    <!-- Search -->
+    <input type="text" id="searchInput" placeholder="Πληκτρολόγησε προϊόν...">
 
-    <!-- Πράσινο LED Φωτιστικό -->
-    <div class="product" data-name="Πράσινο LED Φωτιστικό" data-category="φωτιστικά">
-        <img src="images/product3.jpg" alt="Πράσινο LED Φωτιστικό">
-        <h3>Πράσινο LED Φωτιστικό</h3>
-        <p>Διαθέσιμα χρώματα: Πράσινο, Μπλε, Κόκκινο</p>
-        <div id="paypal-container-GREEN"></div>
-        <script>
-            paypal.HostedButtons({hostedButtonId: "GREEN_BUTTON_ID"}).render("#paypal-container-GREEN");
-        </script>
-    </div>
+    <!-- Προϊόντα -->
+    <div id="productList">
 
-    <!-- Ροζ Scrunchie Μαλλιών -->
-    <div class="product" data-name="Ροζ Scrunchie Μαλλιών" data-category="scrunchie">
-        <img src="images/product4.jpg" alt="Ροζ Scrunchie Μαλλιών">
-        <h3>Ροζ Scrunchie Μαλλιών</h3>
-        <p>Διαθέσιμα χρώματα: Ροζ, Μωβ, Μπλε</p>
-        <div id="paypal-container-PINK"></div>
-        <script>
-            paypal.HostedButtons({hostedButtonId: "PINK_BUTTON_ID"}).render("#paypal-container-PINK");
-        </script>
-    </div>
+        <div class="product" data-name="Κόκκινο Θήκη Κινητού" data-category="θήκες" data-price="14.90">
+            <img src="images/product1.jpg" alt="Κόκκινο Θήκη Κινητού">
+            <h3>Κόκκινο Θήκη Κινητού</h3>
+            <p>Διαθέσιμα χρώματα: Κόκκινο, Μπλε, Πράσινο</p>
+            <div class="paypal-button-container"></div>
+        </div>
 
-    <!-- Κίτρινο Powerbank -->
-    <div class="product" data-name="Κίτρινο Powerbank" data-category="powerbank">
-        <img src="images/product5.jpg" alt="Κίτρινο Powerbank">
-        <h3>Κίτρινο Powerbank</h3>
-        <p>Διαθέσιμα χρώματα: Κίτρινο, Μαύρο, Άσπρο</p>
-        <div id="paypal-container-YELLOW"></div>
-        <script>
-            paypal.HostedButtons({hostedButtonId: "YELLOW_BUTTON_ID"}).render("#paypal-container-YELLOW");
-        </script>
-    </div>
+        <div class="product" data-name="Μπλε Θήκη Κινητού" data-category="θήκες" data-price="14.90">
+            <img src="images/product2.jpg" alt="Μπλε Θήκη Κινητού">
+            <h3>Μπλε Θήκη Κινητού</h3>
+            <p>Διαθέσιμα χρώματα: Μπλε, Κίτρινο, Ροζ</p>
+            <div class="paypal-button-container"></div>
+        </div>
 
-</div>
+        <div class="product" data-name="Πράσινο LED Φωτιστικό" data-category="φωτιστικά" data-price="14.90">
+            <img src="images/product3.jpg" alt="Πράσινο LED Φωτιστικό">
+            <h3>Πράσινο LED Φωτιστικό</h3>
+            <p>Διαθέσιμα χρώματα: Πράσινο, Μπλε, Κόκκινο</p>
+            <div class="paypal-button-container"></div>
+        </div>
+
+        <div class="product" data-name="Ροζ Scrunchie Μαλλιών" data-category="scrunchie" data-price="14.90">
+            <img src="images/product4.jpg" alt="Ροζ Scrunchie Μαλλιών">
+            <h3>Ροζ Scrunchie Μαλλιών</h3>
+            <p>Διαθέσιμα χρώματα: Ροζ, Μωβ, Μπλε</p>
+            <div class="paypal-button-container"></div>
+        </div>
+
+        <div class="product" data-name="Κίτρινο Powerbank" data-category="powerbank" data-price="14.90">
+            <img src="images/product5.jpg" alt="Κίτρινο Powerbank">
+            <h3>Κίτρινο Powerbank</h3>
+            <p>Διαθέσιμα χρώματα: Κίτρινο, Μαύρο, Άσπρο</p>
+            <div class="paypal-button-container"></div>
+        </div>
+
+    </div>
 </main>
 
 <footer>
-<p>© 2025 Faenest Store</p>
+    <p>© 2025 Faenest Store</p>
 </footer>
 
 <script>
+// Αναζήτηση προϊόντων
 const input = document.getElementById('searchInput');
 const products = document.querySelectorAll('#productList .product');
 
-// Αναζήτηση
 input.addEventListener('keyup', function() {
     const filter = input.value.toLowerCase();
     products.forEach(product => {
@@ -111,6 +95,30 @@ buttons.forEach(button => {
             product.style.display = (category === 'all' || product.dataset.category === category) ? 'inline-block' : 'none';
         });
     });
+});
+
+// PayPal Smart Buttons για όλα τα προϊόντα
+products.forEach(product => {
+    const price = product.dataset.price;
+    const name = product.dataset.name;
+    const container = product.querySelector('.paypal-button-container');
+
+    paypal.Buttons({
+        style: { layout: 'vertical', color: 'gold', shape: 'rect', label: 'paypal' },
+        createOrder: function(data, actions) {
+            return actions.order.create({
+                purchase_units: [{
+                    description: name,
+                    amount: { value: price }
+                }]
+            });
+        },
+        onApprove: function(data, actions) {
+            return actions.order.capture().then(function(details) {
+                alert('Η αγορά ολοκληρώθηκε για το προϊόν: ' + name);
+            });
+        }
+    }).render(container);
 });
 </script>
 
